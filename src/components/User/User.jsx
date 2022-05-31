@@ -2,17 +2,16 @@ import React from "react";
 
 function User({
   obj,
-  openListPosts,
   postsVisible,
   handlerPopupList,
   postActive,
   toggleHandler,
-  postBooleanValue
+  postBooleanValue,
+  handlerPopup,
 }) {
-
   return (
     <>
-      <li className="user" onClick={() => openListPosts(obj.id)}>
+      <li className="user" onClick={() => handlerPopup(obj.id)}>
         {obj.user}
       </li>
       <ul
@@ -23,7 +22,7 @@ function User({
         {obj.posts.map((post, index) => (
           <li
             onClick={() => toggleHandler(post.id)}
-            key={`${post.id}${post.index}`}
+            key={`${post.id}${index}`}
             className={`post ${
               postBooleanValue && postActive === post.id && "post_active"
             }`}
